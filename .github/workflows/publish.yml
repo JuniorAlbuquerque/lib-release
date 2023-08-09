@@ -24,11 +24,21 @@ jobs:
           node-version: 16.x
           cache: "pnpm"
 
+      - name: 👤 Set git user
+        run: |
+          git config --global user.email "junioralbuquerque81@gmail.com"
+          git config --global user.name "Junior Albuquerque"
+
       - run: pnpm install --frozen-lockfile
+
       - name: Create Release Pull Request or Publish
         id: changesets
         uses: changesets/action@v1
         with:
+          setupGitUser: false
+          title: "chore(changesets): bump package version"
+          commit: "chore: bump package version"
+          version: node .github/changeset-version.js
           publish: pnpm run release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
