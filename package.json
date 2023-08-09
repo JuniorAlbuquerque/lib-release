@@ -1,0 +1,20 @@
+{
+  "name": "lib-release",
+  "version": "0.0.0",
+  "description": "lib test release w changesets",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsup",
+    "lint": "tsc"
+  },
+  "keywords": [],
+  "author": "JuniorAlbuquerque",
+  "license": "ISC",
+  "devDependencies": {
+    "@changesets/cli": "^2.26.2",
+    "tsup": "^7.2.0",
+    "typescript": "^5.1.6"
+  }
+}
