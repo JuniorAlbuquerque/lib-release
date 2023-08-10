@@ -4,6 +4,7 @@ const sum = (a: number, b: number) => {
 }
 
 const subtraction = (a: number, b: number) => {
+  console.log("sub", a - b)
   return a - b
 }
 
