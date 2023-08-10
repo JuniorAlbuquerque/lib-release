@@ -1,5 +1,11 @@
 # lib-release
 
+## 0.1.0
+
+### Minor Changes
+
+- 1d8e8cd: add subtraction
+
 ## 0.0.1
 
 ### Patch Changes
