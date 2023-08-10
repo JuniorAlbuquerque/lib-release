@@ -1,6 +1,6 @@
 {
   "name": "lib-release",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "lib test release w changesets",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
