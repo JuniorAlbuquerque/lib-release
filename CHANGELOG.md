@@ -1,5 +1,11 @@
 # lib-release
 
+## 0.0.1
+
+### Patch Changes
+
+- b2f2f0c: add divide in lib
+
 ## 0.0.5
 
 ### Patch Changes
