@@ -1,5 +1,11 @@
 # lib-release
 
+## 0.0.4
+
+### Patch Changes
+
+- 0b5d5e1: update yml
+
 ## 0.0.3
 
 ### Patch Changes
