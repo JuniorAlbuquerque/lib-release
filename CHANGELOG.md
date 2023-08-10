@@ -1,5 +1,11 @@
 # lib-release
 
+## 0.1.1
+
+### Patch Changes
+
+- c0a5a76: export subtraction
+
 ## 0.1.0
 
 ### Minor Changes
