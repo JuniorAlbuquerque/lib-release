@@ -16,9 +16,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - uses: pnpm/action-setup@v2
         with:
           version: 7
+
       - uses: actions/setup-node@v3
         with:
           node-version: 16.x
@@ -31,9 +33,6 @@ jobs:
 
       - name: Setup npmrc
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
-
-      - name: setup pnpm config
-        run: pnpm config set store-dir $PNPM_CACHE_FOLDER
 
       - run: pnpm install --frozen-lockfile
 
