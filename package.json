@@ -9,7 +9,8 @@
     "build": "tsup",
     "lint": "tsc",
     "changeset": "changeset",
-    "release": "changeset publish"
+    "release": "changeset publish",
+    "commit": "cz"
   },
   "keywords": [],
   "author": "JuniorAlbuquerque",
@@ -17,7 +18,14 @@
   "devDependencies": {
     "@changesets/changelog-github": "^0.4.8",
     "@changesets/cli": "^2.26.2",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
     "tsup": "^7.2.0",
     "typescript": "^5.1.6"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
