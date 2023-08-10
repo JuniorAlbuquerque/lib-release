@@ -1,7 +1,7 @@
 import { defineConfig } from 'tsup';
 
 export default defineConfig({
-  name: 'lib-release',
+  name: 'lib-release-new',
   entry: ['src/index.ts'],
   format: ['cjs', 'esm'],
   outDir: 'dist',
