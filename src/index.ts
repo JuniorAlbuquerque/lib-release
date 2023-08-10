@@ -9,6 +9,7 @@ const subtraction = (a: number, b: number) => {
 }
 
 const multiply = (a: number, b: number) => {
+  console.log("multiply", a * b)
   return a * b
 }
 
