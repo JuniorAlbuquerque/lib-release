@@ -5,49 +5,38 @@ on:
     branches:
       - "main"
 
-env:
-  CI: true
-  PNPM_CACHE_FOLDER: .pnpm-store
-
-concurrency: ${{ github.workflow }}-${{ github.ref }}
-
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
+      - name: Checkout Repo
+        uses: actions/checkout@v3
         with:
-          version: 7
-      - uses: actions/setup-node@v3
+          fetch-depth: 0
+
+      - name: Use PNPM
+        uses: pnpm/action-setup@v2.2.4
+
+      - name: Use Node.js 18
+        uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 18
           cache: "pnpm"
 
-      - name: 👤 Set git user
-        run: |
-          git config --global user.email "junioralbuquerque81@gmail.com"
-          git config --global user.name "Junior Albuquerque"
-
-      - name: Setup npmrc
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
-
-      - name: setup pnpm config
-        run: pnpm config set store-dir $PNPM_CACHE_FOLDER
-
-      - run: pnpm install --frozen-lockfile
+      - run: pnpm install
 
       - name: ⚒️ Build package
         run: pnpm run build
 
       - name: Create Release Pull Request or Publish
         id: changesets
-        uses: changesets/action@v1
+        uses: changesets/action@v1.4.1
         with:
-          setupGitUser: false
-          title: "chore(changesets): bump package version"
-          commit: "chore: bump package version"
+          commit: "chore(release): version packages"
+          title: "chore(release): version packages"
           version: node .github/changeset-version.js
           publish: pnpm run release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_ENV: "production"
