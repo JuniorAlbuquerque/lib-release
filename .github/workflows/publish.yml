@@ -8,6 +8,10 @@ on:
     branches:
       - "main"
 
+env:
+  CI: true
+  PNPM_CACHE_FOLDER: .pnpm-store
+
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
@@ -29,17 +33,21 @@ jobs:
           git config --global user.email "junioralbuquerque81@gmail.com"
           git config --global user.name "Junior Albuquerque"
 
+      - name: Setup npmrc
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+
+      - name: setup pnpm config
+        run: pnpm config set store-dir $PNPM_CACHE_FOLDER
+
       - run: pnpm install --frozen-lockfile
 
       - name: Create Release Pull Request or Publish
         id: changesets
         uses: changesets/action@v1
         with:
-          setupGitUser: false
-          title: "chore(changesets): bump package version"
-          commit: "chore: bump package version"
-          version: node .github/changeset-version.js
+          version: pnpm ci:version
+          title: "chore: update versions"
+          commit: "chore: update versions"
           publish: pnpm run release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
