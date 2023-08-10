@@ -1,5 +1,5 @@
-const sum = (a: number, b: number, c: number) => {
-  return a + b + c
+const sum = (a: number, b: number) => {
+  return a + b
 }
 
 const subtraction = (a: number, b: number) => {
@@ -17,5 +17,6 @@ const divide = (a: number, b: number) => {
 export {
   sum,
   multiply,
-  divide
+  divide,
+  subtraction
 }
