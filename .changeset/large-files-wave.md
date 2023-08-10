@@ -2,4 +2,4 @@
 "lib-release": patch
 ---
 
-update changesets
+test
