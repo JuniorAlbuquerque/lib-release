@@ -1,5 +1,12 @@
 # lib-release
 
+## 0.1.2
+
+### Patch Changes
+
+- 6e35847: add sum log
+- d6430bd: add log sub
+
 ## 0.1.1
 
 ### Patch Changes
