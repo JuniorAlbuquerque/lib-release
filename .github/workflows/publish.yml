@@ -1,9 +1,6 @@
-name: Publish
+name: Release
+
 on:
-  workflow_run:
-    workflows: ["CI"]
-    types:
-      - completed
   push:
     branches:
       - "main"
@@ -41,13 +38,17 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
+      - name: ⚒️ Build package
+        run: pnpm run build
+
       - name: Create Release Pull Request or Publish
         id: changesets
         uses: changesets/action@v1
         with:
-          title: "chore: update versions"
-          commit: "chore: update versions"
-          version: pnpm ci:version
-          publish: pnpm ci:publish
+          setupGitUser: false
+          title: "chore(changesets): bump package version"
+          commit: "chore: bump package version"
+          version: node .github/changeset-version.js
+          publish: pnpm run release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

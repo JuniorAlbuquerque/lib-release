@@ -1,6 +1,6 @@
 {
   "name": "lib-release",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "lib test release w changesets",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -8,8 +8,8 @@
   "scripts": {
     "build": "tsup",
     "lint": "tsc",
-    "ci:publish": "changeset publish",
-    "ci:version": "changeset version"
+    "changeset": "changeset",
+    "release": "changeset publish"
   },
   "keywords": [],
   "author": "JuniorAlbuquerque",
