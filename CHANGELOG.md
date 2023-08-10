@@ -1,5 +1,11 @@
 # lib-release
 
+## 0.1.3
+
+### Patch Changes
+
+- cf48ad3: add log in multiply
+
 ## 0.1.2
 
 ### Patch Changes
